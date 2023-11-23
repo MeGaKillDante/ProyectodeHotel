@@ -1,14 +1,24 @@
 package Menu;
 
+import Clases.Cliente;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.SwingUtilities;
 import Menu.MenuHabitacion;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MenuPrincipal extends javax.swing.JFrame {
-
-    public MenuPrincipal() {
+    private String valor;
+    private MenuHabitacion abrir; /*metodo constructor*/
+    public MenuPrincipal(String numerodehabitacion ) {
         initComponents();
+        abrir=new MenuHabitacion(relleno,"nada");
         Thread relojThread = new Thread(() -> {
             while (true) {
                 actualizarHora();
@@ -21,6 +31,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         relojThread.start();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -43,6 +54,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lbfecha = new javax.swing.JLabel();
         lbHora = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Ta2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,8 +163,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
+        Ta2.setColumns(20);
+        Ta2.setRows(5);
+        jScrollPane1.setViewportView(Ta2);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    Cliente relleno=new Cliente();
 
     public void actualizarFecha() {
         Date fecha = new Date();
@@ -165,15 +186,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String HoraActual = dateFormat.format(new Date());
         lbHora.setText(HoraActual);
     }
-
+    
     private void txtTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTerminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTerminarActionPerformed
-    MenuHabitacion abrir = new MenuHabitacion();
+
     private void btnH101ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH101ActionPerformed
+        relleno.setNumero("1");
         abrir.NumerodeH("101");
         abrir.setVisible(true);
+        Ta2.setText(relleno.getNumero());
+        relleno.setSeleccion(101);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH101ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -193,33 +218,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnH102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH102ActionPerformed
+        relleno.setNumero("2");
+        Ta2.setText(relleno.getNumero());
         abrir.NumerodeH("102");
+        relleno.setSeleccion(102);
         abrir.setVisible(true);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH102ActionPerformed
 
     private void btnH103ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH103ActionPerformed
         abrir.NumerodeH("103");
+        relleno.setSeleccion(103);
         abrir.setVisible(true);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH103ActionPerformed
 
     private void btnH104ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH104ActionPerformed
         abrir.NumerodeH("104");
+        relleno.setSeleccion(104);
         abrir.setVisible(true);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH104ActionPerformed
 
     private void btnH105ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH105ActionPerformed
         abrir.NumerodeH("105");
+        relleno.setSeleccion(105);
         abrir.setVisible(true);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH105ActionPerformed
 
     private void btnH106ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH106ActionPerformed
         abrir.NumerodeH("106");
+        relleno.setSeleccion(106);
         abrir.setVisible(true);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        abrir.mostrarDatos();
     }//GEN-LAST:event_btnH106ActionPerformed
 
     /**
@@ -227,9 +264,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+            Cliente relleno=new Cliente();
             public void run() {
                 java.awt.EventQueue.invokeLater(() -> {
-                    MenuPrincipal menu = new MenuPrincipal();
+                    MenuPrincipal menu = new MenuPrincipal("alguna cadena");
                     menu.setVisible(true);
                 });
             }
@@ -237,6 +275,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea Ta2;
     private javax.swing.JButton btnH101;
     private javax.swing.JButton btnH102;
     private javax.swing.JButton btnH103;
@@ -250,6 +289,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbHora;
     private javax.swing.JLabel lbfecha;
     private javax.swing.JButton txtTerminar;

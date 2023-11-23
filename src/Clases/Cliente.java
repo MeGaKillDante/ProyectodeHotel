@@ -6,14 +6,14 @@ package Clases;
 
 public class Cliente {
     private String nombre;
-    private String DNI;
-    private String Acompañantes;
-    private String Extra;
-    private String HoraEntrada;
+    private String dni;
+    private String compas;
+    private String datosex;
+    private String entrada;
+    private String numero;
+    private int Seleccion; /*Se almacena el numero de habitacion*/
     public Cliente(){
-        
     }
-
     public String getNombre() {
         return nombre;
     }
@@ -22,36 +22,56 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getDNI() {
-        return DNI;
+    public String getDni() {
+        return dni;
     }
 
-    public void setDNI(String DNI) {
-        this.DNI = DNI;
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
-    public String getAcompañantes() {
-        return Acompañantes;
+    public String getCompas() {
+        return compas;
     }
 
-    public void setAcompañantes(String Acompañantes) {
-        this.Acompañantes = Acompañantes;
+    public void setCompas(String compas) {
+        this.compas = compas;
     }
 
-    public String getExtra() {
-        return Extra;
+    public String getDatosex() {
+        return datosex;
     }
 
-    public void setExtra(String Extra) {
-        this.Extra = Extra;
+    public void setDatosex(String datosex) {
+        this.datosex = datosex;
     }
 
-    public String getHoraEntrada() {
-        return HoraEntrada;
+    public String getEntrada() {
+        return entrada;
     }
 
-    public void setHoraEntrada(String HoraEntrada) {
-        this.HoraEntrada = HoraEntrada;
+    public void setEntrada(String entrada) {
+        this.entrada = entrada;
+    }
+
+    public int getSeleccion() {
+        return Seleccion;
+    }
+
+    public void setSeleccion(int Seleccion) {
+        this.Seleccion = Seleccion;
+    } 
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
     
+
+    
 }
+
+
