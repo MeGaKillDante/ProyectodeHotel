@@ -1,6 +1,8 @@
 package Menu;
 
+import Clases.Cliente;
 import Clases.Servicios;
+import java.awt.BorderLayout;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,23 +13,25 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 public class MDI extends javax.swing.JFrame {
-    DefaultTableModel modelo=new DefaultTableModel();
-    ArrayList <Servicios> listaServicios=new ArrayList<Servicios>();
-    ControldeHabitacion Infohabitacion;
-    DefaultTableModel modelodeservicios=Infohabitacion.getModelodeServicios();
+
+    DefaultTableModel modelo = new DefaultTableModel();
+    ArrayList<Servicios> listaServicios = new ArrayList<Servicios>();
     MenuAgregarServicio Servicios;
+    MenuNuevoCliente newcliente;
+    Cliente cliente;
     String ultimonombre = null;
     String ultimodni = null;
     String ultimocompas = null;
     String ultimodatosex = null;
     String ultimoentrada = null;
+    String ultimorenta = null;
     String descripcion;
     int numerodehabitacion;
+
     public MDI() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
-        Infohabitacion = new ControldeHabitacion();
-        Servicios= new MenuAgregarServicio();
+        Servicios = new MenuAgregarServicio();
         Thread relojThread = new Thread(() -> {
             while (true) {
                 SwingUtilities.invokeLater(() -> {
@@ -62,13 +66,12 @@ public class MDI extends javax.swing.JFrame {
         InfoH105SubM = new javax.swing.JMenuItem();
         InfoH106SubM = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         copyMenuItem = new javax.swing.JMenuItem();
+        cutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
-        aboutMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,14 +154,14 @@ public class MDI extends javax.swing.JFrame {
         editMenu.setMnemonic('e');
         editMenu.setText("Nuevo");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Reservar Cuarto");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        pasteMenuItem.setMnemonic('p');
+        pasteMenuItem.setText("Agregar Cliente");
+        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                pasteMenuItemActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
+        editMenu.add(pasteMenuItem);
 
         jMenuItem1.setText("Agregar Servicio");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -168,13 +171,23 @@ public class MDI extends javax.swing.JFrame {
         });
         editMenu.add(jMenuItem1);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Llamada de aviso ");
-        editMenu.add(pasteMenuItem);
-
         copyMenuItem.setMnemonic('y');
         copyMenuItem.setText("Liberar Cuarto");
+        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copyMenuItemActionPerformed(evt);
+            }
+        });
         editMenu.add(copyMenuItem);
+
+        cutMenuItem.setMnemonic('t');
+        cutMenuItem.setText("Reservar Cuarto");
+        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cutMenuItemActionPerformed(evt);
+            }
+        });
+        editMenu.add(cutMenuItem);
 
         menuBar.add(editMenu);
 
@@ -182,12 +195,8 @@ public class MDI extends javax.swing.JFrame {
         helpMenu.setText("Cerrar Sesion");
 
         contentMenuItem.setMnemonic('c');
-        contentMenuItem.setText("Contents");
+        contentMenuItem.setText("Salir");
         helpMenu.add(contentMenuItem);
-
-        aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
 
@@ -197,33 +206,34 @@ public class MDI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1515, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1515, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 881, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     private void actualizarHora() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         String HoraActual = dateFormat.format(new Date());
         lbHora.setText(HoraActual);
     }
-    private void CargarModelodeServicios(){
+
+    private void CargarModelodeServicios() {
         modelo.addColumn("Servicio");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Total");
-        
+
     }
-    public void actualizarFecha(){
+
+    public void actualizarFecha() {
         Date fecha = new Date();
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
         String fechaActual = formatoFecha.format(fecha);
@@ -240,33 +250,37 @@ public class MDI extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_cutMenuItemActionPerformed
-
+    ControldeHabitacion control = new ControldeHabitacion();
     private void InfoH101SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH101SubMActionPerformed
-        numerodehabitacion=101;
+
+        numerodehabitacion = 101;
         String linea;
         try (BufferedReader br1 = new BufferedReader(new FileReader("Habitacion101Clientes.txt"))) {
+
             while ((linea = br1.readLine()) != null) {
                 String[] partes = linea.split(" ");
-                ultimonombre = partes[0];
-                ultimodni = partes[1];
-                ultimocompas = partes[2];
-                ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
+                    ultimonombre = partes[0];
+                    ultimodni = partes[1];
+                    ultimocompas = partes[2];
+                    ultimodatosex = partes[3];
+                    ultimorenta = partes[4];
             }
-            
+
         } catch (IOException ex) {
+
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        System.out.println(ultimonombre + " " + ultimodni + " " + ultimocompas + " " + ultimodatosex + " "+ " " + ultimorenta);
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH101SubMActionPerformed
 
     private void InfoH105SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH105SubMActionPerformed
-        numerodehabitacion=105;
+        numerodehabitacion = 105;
         String linea;
-        try (BufferedReader br5 = new BufferedReader(new FileReader("Habitacion101Clientes.txt"))) {
+        try (BufferedReader br5 = new BufferedReader(new FileReader("Habitacion105Clientes.txt"))) {
             while ((linea = br5.readLine()) != null) {
                 String[] partes = linea.split(" ");
                 ultimonombre = partes[0];
@@ -274,21 +288,22 @@ public class MDI extends javax.swing.JFrame {
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
                 ultimoentrada = partes[4];
+                ultimorenta = partes[5];
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH105SubMActionPerformed
 
     private void InfoH102SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH102SubMActionPerformed
-        numerodehabitacion=102;
+        numerodehabitacion = 102;
         String linea;
-        try (BufferedReader br2 = new BufferedReader(new FileReader("Habitacion103Clientes.txt"))) {
+        try (BufferedReader br2 = new BufferedReader(new FileReader("Habitacion102Clientes.txt"))) {
             while ((linea = br2.readLine()) != null) {
                 String[] partes = linea.split(" ");
                 ultimonombre = partes[0];
@@ -296,19 +311,20 @@ public class MDI extends javax.swing.JFrame {
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
                 ultimoentrada = partes[4];
+                ultimorenta = partes[5];
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH102SubMActionPerformed
 
     private void InfoH103SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH103SubMActionPerformed
-        numerodehabitacion=103;
+        numerodehabitacion = 103;
         String linea;
         try (BufferedReader br3 = new BufferedReader(new FileReader("Habitacion103Clientes.txt"))) {
             while ((linea = br3.readLine()) != null) {
@@ -318,21 +334,22 @@ public class MDI extends javax.swing.JFrame {
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
                 ultimoentrada = partes[4];
+                ultimorenta = partes[5];
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH103SubMActionPerformed
 
     private void InfoH104SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH104SubMActionPerformed
-        numerodehabitacion=104;
+        numerodehabitacion = 104;
         String linea;
-        try (BufferedReader br4 = new BufferedReader(new FileReader("Habitacion101Clientes.txt"))) {
+        try (BufferedReader br4 = new BufferedReader(new FileReader("Habitacion104Clientes.txt"))) {
             while ((linea = br4.readLine()) != null) {
                 String[] partes = linea.split(" ");
                 ultimonombre = partes[0];
@@ -340,19 +357,20 @@ public class MDI extends javax.swing.JFrame {
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
                 ultimoentrada = partes[4];
+                ultimorenta = partes[5];
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH104SubMActionPerformed
 
     private void InfoH106SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH106SubMActionPerformed
-        numerodehabitacion=106;
+        numerodehabitacion = 106;
         String linea;
         try (BufferedReader br6 = new BufferedReader(new FileReader("Habitacion106Clientes.txt"))) {
             while ((linea = br6.readLine()) != null) {
@@ -362,27 +380,34 @@ public class MDI extends javax.swing.JFrame {
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
                 ultimoentrada = partes[4];
+                ultimorenta = partes[5];
             }
-            
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        descripcion="Cuarto de 2 camas y vista el mar seccion:Premium";
-        Infohabitacion.Informacion(numerodehabitacion,descripcion,ultimonombre, ultimodni, ultimocompas, ultimoentrada);
-        this.desktopPane.add(Infohabitacion);
-        Infohabitacion.show();
+        descripcion = "Cuarto de 2 camas y vista el mar seccion:Premium";
+        control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
+        this.desktopPane.add(control);
+        control.show();
     }//GEN-LAST:event_InfoH106SubMActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         this.desktopPane.add(Servicios);
-        Servicios.show();
+        Servicios.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
 
+    }//GEN-LAST:event_copyMenuItemActionPerformed
+
+    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+        newcliente = new MenuNuevoCliente();
+        this.desktopPane.add(newcliente);
+        newcliente.show();
+    }//GEN-LAST:event_pasteMenuItemActionPerformed
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 java.awt.EventQueue.invokeLater(() -> {
@@ -403,7 +428,6 @@ public class MDI extends javax.swing.JFrame {
     private javax.swing.JMenuItem InfoH106SubM;
     private javax.swing.JMenu InformacionMenu;
     private javax.swing.JMenuItem ReservarMenuItem;
-    private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JMenuItem contentMenuItem;
     private javax.swing.JMenuItem copyMenuItem;
     private javax.swing.JMenuItem cutMenuItem;
