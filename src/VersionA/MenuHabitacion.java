@@ -1,7 +1,6 @@
-package Menu;
+package VersionA;
 
 import Clases.Cliente;
-import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class MenuHabitacion extends javax.swing.JFrame {
 
@@ -37,7 +35,6 @@ public class MenuHabitacion extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtEntrada = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
@@ -89,14 +86,6 @@ public class MenuHabitacion extends javax.swing.JFrame {
 
         jLabel8.setText("DATOS EXTRAS:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
-
-        jTextField3.setText("(FOTO)");
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 250, 150));
 
         jLabel9.setText("HORA DE ENTRADA:");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
@@ -217,10 +206,6 @@ public class MenuHabitacion extends javax.swing.JFrame {
         txtNumerodeH.setText(numero);
 
     }
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
     private void txtEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEntradaActionPerformed
@@ -567,7 +552,6 @@ public class MenuHabitacion extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDatosex;

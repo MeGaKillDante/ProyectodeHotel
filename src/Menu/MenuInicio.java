@@ -4,6 +4,7 @@
  */
 package Menu;
 
+import VersionA.MenuPrincipal;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 /**
@@ -59,6 +60,12 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 320, -1));
+
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 320, -1));
 
         btnIngresar.setBackground(new java.awt.Color(255, 255, 102));
@@ -88,8 +95,8 @@ public class MenuInicio extends javax.swing.JFrame {
         String C, Ct;
         C=txtCorreo.getText();
         Ct=txtContraseña.getText();
-        MenuGerente abrir = new MenuGerente();
-        if (C.equals("gerente@gmail.com")&& Ct.equals("123456")){
+        MenuPrincipal abrir = new MenuPrincipal("hola");
+        if (C.equals("empleado@gmail.com")&& Ct.equals("123456")){
             abrir.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos");
@@ -103,6 +110,10 @@ public class MenuInicio extends javax.swing.JFrame {
     private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
 
     /**
      * @param args the command line arguments

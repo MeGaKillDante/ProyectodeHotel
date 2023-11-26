@@ -1,10 +1,10 @@
-package Menu;
+package VersionA;
 
 import Clases.Cliente;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.SwingUtilities;
-import Menu.MenuHabitacion;
+import VersionA.MenuHabitacion;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -38,6 +38,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField1 = new javax.swing.JTextField();
         txtTerminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnH106 = new javax.swing.JButton();
@@ -53,9 +54,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         lbfecha = new javax.swing.JLabel();
         lbHora = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Ta2 = new javax.swing.JTextArea();
+        jButton14 = new javax.swing.JButton();
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -133,7 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
 
         jButton11.setText("ESTADO");
         getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
@@ -155,19 +156,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
         lbHora.setText("Hora");
         getContentPane().add(lbHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 60, 30));
 
-        jButton9.setText("ESTADO");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        jButton14.setText("MANT.");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                jButton14ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
-
-        Ta2.setColumns(20);
-        Ta2.setRows(5);
-        jScrollPane1.setViewportView(Ta2);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 120, -1, -1));
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,7 +190,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         relleno.setNumero("1");
         abrir.NumerodeH("101");
         abrir.setVisible(true);
-        Ta2.setText(relleno.getNumero());
         relleno.setSeleccion(101);
         abrir.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         abrir.mostrarDatos();
@@ -213,13 +207,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void btnH102ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnH102ActionPerformed
         relleno.setNumero("2");
-        Ta2.setText(relleno.getNumero());
         abrir.NumerodeH("102");
         relleno.setSeleccion(102);
         abrir.setVisible(true);
@@ -259,6 +248,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         abrir.mostrarDatos();
     }//GEN-LAST:event_btnH106ActionPerformed
 
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton14ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -275,7 +268,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea Ta2;
     private javax.swing.JButton btnH101;
     private javax.swing.JButton btnH102;
     private javax.swing.JButton btnH103;
@@ -286,10 +278,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbHora;
     private javax.swing.JLabel lbfecha;
     private javax.swing.JButton txtTerminar;
