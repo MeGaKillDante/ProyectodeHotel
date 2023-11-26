@@ -147,7 +147,75 @@ public class MenuNuevoCliente extends javax.swing.JInternalFrame {
             FileWriter H101 = null;
             PrintWriter pw1 = null;
             try {
-                H101 = new FileWriter("Habitacion101Clientes.txt", true);
+                H101 = new FileWriter("Habitacion102Clientes.txt", true);
+                pw1 = new PrintWriter(H101);
+                pw1.println(txtNombre.getText() + " " + txtDNI.getText() + " " + txtcompas.getText() + " " + txtDatosex.getText()+" "+CBPago.getSelectedItem().toString());
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                H101.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DatosGenerales();
+        }
+        if ("103".equals(NumeroH)){
+            FileWriter H101 = null;
+            PrintWriter pw1 = null;
+            try {
+                H101 = new FileWriter("Habitacion103Clientes.txt", true);
+                pw1 = new PrintWriter(H101);
+                pw1.println(txtNombre.getText() + " " + txtDNI.getText() + " " + txtcompas.getText() + " " + txtDatosex.getText()+" "+CBPago.getSelectedItem().toString());
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                H101.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DatosGenerales();
+        }
+        if ("104".equals(NumeroH)){
+            FileWriter H101 = null;
+            PrintWriter pw1 = null;
+            try {
+                H101 = new FileWriter("Habitacion104Clientes.txt", true);
+                pw1 = new PrintWriter(H101);
+                pw1.println(txtNombre.getText() + " " + txtDNI.getText() + " " + txtcompas.getText() + " " + txtDatosex.getText()+" "+CBPago.getSelectedItem().toString());
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                H101.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DatosGenerales();
+        }
+        if ("105".equals(NumeroH)){
+            FileWriter H101 = null;
+            PrintWriter pw1 = null;
+            try {
+                H101 = new FileWriter("Habitacion15clientes.txt", true);
+                pw1 = new PrintWriter(H101);
+                pw1.println(txtNombre.getText() + " " + txtDNI.getText() + " " + txtcompas.getText() + " " + txtDatosex.getText()+" "+CBPago.getSelectedItem().toString());
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                H101.close();
+            } catch (IOException ex) {
+                Logger.getLogger(MenuHabitacion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            DatosGenerales();
+        }
+        if ("106".equals(NumeroH)){
+            FileWriter H101 = null;
+            PrintWriter pw1 = null;
+            try {
+                H101 = new FileWriter("Habitacion106Clientes.txt", true);
                 pw1 = new PrintWriter(H101);
                 pw1.println(txtNombre.getText() + " " + txtDNI.getText() + " " + txtcompas.getText() + " " + txtDatosex.getText()+" "+CBPago.getSelectedItem().toString());
             } catch (IOException ex) {

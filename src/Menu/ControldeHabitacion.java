@@ -5,7 +5,6 @@ import Clases.Servicios;
 import java.util.ArrayList;
 public class ControldeHabitacion extends javax.swing.JInternalFrame {
     Servicios e=new Servicios();
-    ArrayList <Servicios> listaServicios=new ArrayList<Servicios>();
     DefaultTableModel modelo=new DefaultTableModel();
     private void CargarModelodeServicios(){
         modelo.addColumn("Servicio");
@@ -17,18 +16,18 @@ public class ControldeHabitacion extends javax.swing.JInternalFrame {
     public ControldeHabitacion() {
         initComponents();
         CargarModelodeServicios();
-        AgregarServicios(e);
     }
     public DefaultTableModel getModelodeServicios(){
         return modelo;
     }
-    public void Informacion(int numero,String descripcion,String Nombre, String DNI, String compas, String datosex){
+    public void Informacion(int numero,String descripcion,String Nombre, String DNI, String compas, String datosex,String Renta ){
         txtNumero.setText(String.valueOf(numero));
         txtDescripcion.setText(descripcion);
         txtNombre.setText(Nombre);
         txtDNI.setText(DNI);
         txtCompas.setText(compas);
         txtDatosex.setText(datosex);
+        txtRenta.setText(Renta);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -81,6 +80,8 @@ public class ControldeHabitacion extends javax.swing.JInternalFrame {
 
         txtDatosex.setEditable(false);
         getContentPane().add(txtDatosex, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 230, -1));
+
+        txtRenta.setEditable(false);
         getContentPane().add(txtRenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 110, -1));
 
         jLabel3.setText("TIPO DE RENTA");
@@ -155,12 +156,7 @@ public class ControldeHabitacion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void AgregarServicios(Servicios e){
-        String Manuel;
-        Manuel=e.getProducto();
-        for (int i=0;i<listaServicios.size();i++){
-  
-            modelo.addRow(new Object[]{listaServicios.get(i).getCantidad(),listaServicios.get(i).getDescripcion(),listaServicios.get(i).getCantidad()});
-        }
+        
     }
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:

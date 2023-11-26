@@ -12,7 +12,6 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
         CBTipo.addItem("Bebidas");
         CBTipo.addItem("Comida");
         CBTipo.addItem("Streaming");
-        this.control=control;    
     }
 
     @SuppressWarnings("unchecked")
@@ -131,9 +130,7 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CBTipoActionPerformed
     
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        e.setProducto(ServicioElegido);
-        e.setCantidad(Integer.parseInt(txtCantidad.getText()));
-        control.AgregarServicios(e);
+ 
         
     }//GEN-LAST:event_btnContinuarActionPerformed
 
