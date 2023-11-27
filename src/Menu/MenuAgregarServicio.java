@@ -1,11 +1,14 @@
 
 package Menu;
 import Clases.Servicios;
+import javax.swing.SpinnerNumberModel;
 public class MenuAgregarServicio extends javax.swing.JInternalFrame {
     Servicios e;
     String TipoSeleccion;
+    String TipoServicio;
     String ServicioElegido;
     ControldeHabitacion control;
+    Servicios es;
     public MenuAgregarServicio() {
         initComponents();
         CBTipo.addItem("Seleccionar");
@@ -18,6 +21,8 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         CBHabitacion = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
@@ -27,7 +32,11 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lbCanoHoras = new javax.swing.JLabel();
-        txtCantidad = new javax.swing.JTextField();
+        SCantidad = new javax.swing.JSpinner();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setClosable(true);
         setIconifiable(true);
@@ -82,7 +91,7 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
 
         lbCanoHoras.setText("(Selecciona el tipo de Servicio)");
         getContentPane().add(lbCanoHoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 80, -1));
+        getContentPane().add(SCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -93,7 +102,7 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
             CBServicio.addItem("Pilsen en lata");
             CBServicio.addItem("Gaseosa Coca Kola 300ml");
             CBServicio.addItem("Gaseosa Inca Kola 300ml");
-            CBServicio.addItem("Licor Four Loko personal");
+            CBServicio.addItem("Licor Four Loko Morado");
         }else if ("Streaming".equals(TipoSeleccion)){
             CBServicio.addItem("Amazon Prime");
             CBServicio.addItem("Diney Plus");
@@ -111,6 +120,23 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
         } else if ("Streaming".equals(TipoSeleccion)){
             lbCanoHoras.setText("Indique los dias");
         }
+    }
+    public void ColocarServicio(Servicios es){
+        TipoServicio=(String) CBServicio.getSelectedItem();
+        es.setProducto(CBTipo.getSelectedItem().toString());
+        if ("Pilsen en lata".equals(TipoServicio)){
+            es.setDescripcion("Son cervezas frescas, doradas, ligeras, con buena carbonatación y con un sutil amargor final.");
+            es.setPrecio(5);
+        }else if ("Gaseosa Coca Kola".equals(TipoServicio)){
+            es.setDescripcion("Gaseosa Gasificada,mezcla de azúcar y aceites de naranja, limón y vainilla.");
+        }else if ("Gaseosa Inca Kola".equals(TipoServicio)){
+            es.setDescripcion("Gaseosa Gasificada,sabor dulce y un color amarillo-dorado.");
+        }else if ("Licor Four Loko Morado".equals(TipoServicio)){
+            es.setDescripcion("Purple destacará por su lata color violeta y por un sabor de uva agridulce,");
+        }
+        SpinnerNumberModel model=(SpinnerNumberModel) SCantidad.getModel();
+        int cantidad=(int) model.getNumber();
+        es.setCantidad(cantidad);
     }
 
     private void CBHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBHabitacionActionPerformed
@@ -130,7 +156,7 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_CBTipoActionPerformed
     
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
- 
+        ColocarServicio(es);
         
     }//GEN-LAST:event_btnContinuarActionPerformed
 
@@ -139,13 +165,15 @@ public class MenuAgregarServicio extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<String> CBHabitacion;
     private javax.swing.JComboBox<String> CBServicio;
     private javax.swing.JComboBox<String> CBTipo;
+    private javax.swing.JSpinner SCantidad;
     private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbCanoHoras;
-    private javax.swing.JTextField txtCantidad;
     // End of variables declaration//GEN-END:variables
 }
 

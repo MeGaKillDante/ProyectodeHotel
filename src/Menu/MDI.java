@@ -15,8 +15,8 @@ import javax.swing.table.DefaultTableModel;
 public class MDI extends javax.swing.JFrame {
 
     DefaultTableModel modelo = new DefaultTableModel();
-    ArrayList<Servicios> listaServicios = new ArrayList<Servicios>();
     MenuAgregarServicio Servicios;
+    Servicios es=new Servicios();
     MenuNuevoCliente newcliente;
     Cliente cliente;
     String ultimonombre = null;
@@ -225,13 +225,6 @@ public class MDI extends javax.swing.JFrame {
         lbHora.setText(HoraActual);
     }
 
-    private void CargarModelodeServicios() {
-        modelo.addColumn("Servicio");
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Total");
-
-    }
 
     public void actualizarFecha() {
         Date fecha = new Date();
@@ -253,6 +246,8 @@ public class MDI extends javax.swing.JFrame {
     ControldeHabitacion control = new ControldeHabitacion();
     private void InfoH101SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH101SubMActionPerformed
 
+        double total=es.getCantidad()*es.getPrecio();
+        modelo.addRow(new Object[]{es.getProducto(),es.getDescripcion(),es.getCantidad(),total});
         numerodehabitacion = 101;
         String linea;
         try (BufferedReader br1 = new BufferedReader(new FileReader("Habitacion101Clientes.txt"))) {
@@ -275,6 +270,7 @@ public class MDI extends javax.swing.JFrame {
         control.Informacion(numerodehabitacion, descripcion, ultimonombre, ultimodni, ultimocompas, ultimodatosex, ultimorenta);
         this.desktopPane.add(control);
         control.show();
+        
     }//GEN-LAST:event_InfoH101SubMActionPerformed
 
     private void InfoH105SubMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoH105SubMActionPerformed
@@ -287,8 +283,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {
@@ -310,8 +305,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {
@@ -333,8 +327,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {
@@ -356,8 +349,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {
@@ -379,8 +371,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {

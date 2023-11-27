@@ -1,26 +1,42 @@
-
 package Menu;
+
 import javax.swing.table.DefaultTableModel;
 import Clases.Servicios;
-import java.util.ArrayList;
+import Clases.ArrayServicios;
+import javax.swing.event.TableModelEvent;
+
+
 public class ControldeHabitacion extends javax.swing.JInternalFrame {
-    Servicios e=new Servicios();
-    DefaultTableModel modelo=new DefaultTableModel();
-    private void CargarModelodeServicios(){
-        modelo.addColumn("Servicio");
-        modelo.addColumn("Cantidad");
-        modelo.addColumn("Descripcion");
-        modelo.addColumn("Total");
-        TbServicios.setModel(modelo);
+    MDI me;
+    Servicios se;
+    DefaultTableModel modelo = new DefaultTableModel();
+    int num;
+    private void CargarModelodeServicios() {
+            modelo.addColumn("Servicio23");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Descripcion");
+            modelo.addColumn("Total");
+            TbServicios.setModel(modelo);
     }
+
     public ControldeHabitacion() {
         initComponents();
+        se=new Servicios();
+        me=new MDI();
+        MenuAgregarServicio llenar = new MenuAgregarServicio();
+        Servicios es = new Servicios();
+        
         CargarModelodeServicios();
+
     }
-    public DefaultTableModel getModelodeServicios(){
-        return modelo;
+    public void numero(int numerodeh) {
+        num = numerodeh;
     }
-    public void Informacion(int numero,String descripcion,String Nombre, String DNI, String compas, String datosex,String Renta ){
+    public void AgregarServicio(String No, String De, int Can, double total) {
+        modelo.addRow(new Object[]{No, De, Can, total});
+    }
+
+    public void Informacion(int numero, String descripcion, String Nombre, String DNI, String compas, String datosex, String Renta) {
         txtNumero.setText(String.valueOf(numero));
         txtDescripcion.setText(descripcion);
         txtNombre.setText(Nombre);
@@ -29,6 +45,7 @@ public class ControldeHabitacion extends javax.swing.JInternalFrame {
         txtDatosex.setText(datosex);
         txtRenta.setText(Renta);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,13 +172,11 @@ public class ControldeHabitacion extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    public void AgregarServicios(Servicios e){
-        
-    }
+
     private void txtNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNumeroActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumeroActionPerformed
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TbServicios;

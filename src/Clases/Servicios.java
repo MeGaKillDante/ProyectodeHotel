@@ -4,6 +4,7 @@
  */
 package Clases;
 
+
 /**
  *
  * @author artur
@@ -12,7 +13,8 @@ public class Servicios {
     private String producto;
     private int cantidad;
     private String descripcion;
-    private double total;
+    private double precio;
+    private int num;
     public Servicios(){
         
     }
@@ -40,13 +42,21 @@ public class Servicios {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-
-    public double getTotal() {
-        return total;
+    public double getPrecio() {
+        return precio;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+    
     
 }
