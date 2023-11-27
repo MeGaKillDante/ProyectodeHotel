@@ -7,6 +7,7 @@ package Menu;
 import VersionA.MenuPrincipal;
 import javax.swing.JOptionPane;
 import java.awt.Color;
+import Menu.MenuGerente;
 /**
  *
  * @author diazr

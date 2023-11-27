@@ -21,3 +21,4 @@ Arturo 762423 3 Discapacitado HABITACION: 101
 Arturo 72610553 3 Disca HABITACION: 101
 Arturo 32444 cuatro Salmon HABITACION: 101
 ARTURO 563 cuatro salmon HABITACION: 101
+arturo 234234 1 hola HABITACION: 102

@@ -1,6 +1,7 @@
 package Menu;
 
 import Clases.Cliente;
+import Clases.HotelEmpleados;
 import Clases.Servicios;
 import java.awt.BorderLayout;
 import java.io.BufferedReader;
@@ -65,6 +66,7 @@ public class MDI extends javax.swing.JFrame {
         InfoH104SubM = new javax.swing.JMenuItem();
         InfoH105SubM = new javax.swing.JMenuItem();
         InfoH106SubM = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         pasteMenuItem = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -72,6 +74,10 @@ public class MDI extends javax.swing.JFrame {
         cutMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,6 +155,14 @@ public class MDI extends javax.swing.JFrame {
 
         InformacionMenu.add(jMenu1);
 
+        jMenuItem2.setText("Gerente");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        InformacionMenu.add(jMenuItem2);
+
         menuBar.add(InformacionMenu);
 
         editMenu.setMnemonic('e');
@@ -199,6 +213,34 @@ public class MDI extends javax.swing.JFrame {
         helpMenu.add(contentMenuItem);
 
         menuBar.add(helpMenu);
+
+        jMenu2.setText("Gerente");
+
+        jMenuItem3.setText("Cliente");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Gastos");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Registro De Empleados");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
 
@@ -310,8 +352,7 @@ public class MDI extends javax.swing.JFrame {
                 ultimodni = partes[1];
                 ultimocompas = partes[2];
                 ultimodatosex = partes[3];
-                ultimoentrada = partes[4];
-                ultimorenta = partes[5];
+                ultimorenta = partes[4];
             }
 
         } catch (IOException ex) {
@@ -407,6 +448,31 @@ public class MDI extends javax.swing.JFrame {
         newcliente.show();
     }//GEN-LAST:event_pasteMenuItemActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        MenuGerente a =new MenuGerente();
+        this.desktopPane.add(a);
+        a.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        Clientes b =new Clientes();
+        this.desktopPane.add(b);
+        b.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        Gastos c =new Gastos();
+        this.desktopPane.add(c);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        MenuEmpleados d =new MenuEmpleados();
+        this.desktopPane.add(d);
+        d.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -435,7 +501,12 @@ public class MDI extends javax.swing.JFrame {
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JLabel lbFecha;
     private javax.swing.JLabel lbHora;
     private javax.swing.JMenuBar menuBar;
